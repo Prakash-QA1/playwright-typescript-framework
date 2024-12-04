@@ -30,9 +30,9 @@ export default class LandingPage {
         await this.page.locator(this.phoneinputSelector).first().fill(phone.toString());
     }
 
-    async selectConcentCheckbox(){
-        await this.page.locator(this.concentCheckboxSelector).first().click();
-    }
+    // async selectConcentCheckbox(){
+    //     await this.page.locator(this.concentCheckboxSelector).first().click();
+    // }
 
     async clickSubmitInput(){
         await this.page.getByText(this.submitInputSelector).first().click();
