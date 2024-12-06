@@ -1,4 +1,6 @@
 import { Page,expect } from "@playwright/test";
+import { error } from "console";
+import logger from "../utils/LoggerUtil";
 
 export default class SyllabusPage{
 
@@ -9,8 +11,10 @@ export default class SyllabusPage{
     }
 
     async expectDonwloadSyllabusTextToBeVisible(){
-        await expect(this.page.getByText(this.downloadTextSelector)).toBeVisible();
-        console.log("Verified syllabus download page.");
+        await expect(this.page.getByText(this.downloadTextSelector)).toBeVisible().catch((error) => {
+            logger.error(`Download Syllabus text is not visible: ${error}`);
+            throw error; //rethrow the error if needed.
+        }).then(() => logger.info("Download syllabus text is visible."));
     }
 
 }

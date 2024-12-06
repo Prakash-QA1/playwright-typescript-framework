@@ -1,6 +1,7 @@
 import { Page, expect } from "@playwright/test";
 import { error } from "console";
 import SyllabusPage from "./SyllabusPage";
+import logger from "../utils/LoggerUtil";
 
 export default class LandingPage {
 
@@ -16,18 +17,22 @@ export default class LandingPage {
 
     async navigateToLandingPage(){
         await this.page.goto("");
+        logger.info("Navigated to landing page URL.");
     }
 
     async fillFirstname(firstname: string){
         await this.page.getByPlaceholder(this.firstnameInputSelector).first().fill(firstname);
+        logger.info("Filled FirstName.");
     }
 
     async fillEmail(email: string){
         await this.page.locator(this.emailInpitSelector).first().fill(email);
+        logger.info("Filled Email.");
     }
 
     async fillPhone(phone: number){
         await this.page.locator(this.phoneinputSelector).first().fill(phone.toString());
+        logger.info("Filled Phone Number.");
     }
 
     // async selectConcentCheckbox(){
@@ -35,7 +40,10 @@ export default class LandingPage {
     // }
 
     async clickSubmitInput(){
-        await this.page.getByText(this.submitInputSelector).first().click();
+        await this.page.getByText(this.submitInputSelector).first().click().catch((error) =>{
+            logger.error(`Error clicking on Submit button. ${error}`);
+            throw error; //rethrow the error if needed.
+        }).then(()=>logger.info("Clicked on Submit button."));
 
         const syllabuspage = await new SyllabusPage(this.page);
         return syllabuspage;
