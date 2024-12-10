@@ -1,5 +1,6 @@
-import { Page, expect } from "@playwright/test";
-import { error } from "console";
+
+import { Page } from "@playwright/test";
+
 import SyllabusPage from "./SyllabusPage";
 import logger from "../utils/LoggerUtil";
 
@@ -39,14 +40,23 @@ export default class LandingPage {
     //     await this.page.locator(this.concentCheckboxSelector).first().click();
     // }
 
-    async clickSubmitInput(){
+    // async clickSubmitInput(){
+    //     await this.page.getByText(this.submitInputSelector).first().click().catch((error) =>{
+    //         logger.error(`Error clicking on Submit button. ${error}`);
+    //         throw error; //rethrow the error if needed.
+    //     }).then(()=>logger.info("Clicked on Submit button."));
+
+    //     const syllabuspage = await new SyllabusPage(this.page);
+    //     return syllabuspage;
+    // }
+
+    async clickSubmitInput(): Promise<SyllabusPage>{
         await this.page.getByText(this.submitInputSelector).first().click().catch((error) =>{
             logger.error(`Error clicking on Submit button. ${error}`);
             throw error; //rethrow the error if needed.
         }).then(()=>logger.info("Clicked on Submit button."));
 
-        const syllabuspage = await new SyllabusPage(this.page);
-        return syllabuspage;
+        return new SyllabusPage(this.page);
     }
 
     

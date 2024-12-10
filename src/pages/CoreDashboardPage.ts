@@ -12,6 +12,9 @@ export default class CoreDashboardPage{
     private readonly headingTextSelector = "#headingText";
     private readonly passwordInputSelector = "[name='Passwd']";
 
+    private readonly emailElement = 'tr:first-child td.col-email a[href^="mailto:"]';
+
+
     constructor(private page:Page){
 
     }
@@ -41,6 +44,12 @@ export default class CoreDashboardPage{
 
     async fillPassword(){
         await this.page.locator(this.passwordInputSelector).fill("Avdi@1212", {timeout:15000});
+    }
+
+
+    async verifySyllbusRequestRecord(){
+        const email = this.page.locator(this.emailElement).innerText();
+        return email;
     }
 
 }

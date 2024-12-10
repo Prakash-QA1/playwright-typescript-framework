@@ -29,9 +29,14 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  //workers: process.env.CI ? 1 : undefined,
+
+  workers: process.env.CI ? 1 : 1, // Force sequential tests (1 worker) for both local and CI (or adjust as needed)
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['html', { outputFolder: 'src/reporting', open: 'always' }],  // HTML reporter with output in the 'src/reporting' folder
+    ['json', { outputFile: 'src/reporting/test-results.json' }]  // JSON report for machine-readable data
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */

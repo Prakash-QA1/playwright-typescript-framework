@@ -1,5 +1,5 @@
 import { Page,expect } from "@playwright/test";
-import { error } from "console";
+
 import logger from "../utils/LoggerUtil";
 
 export default class SyllabusPage{

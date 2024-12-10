@@ -1,23 +1,35 @@
-import { test } from "@playwright/test";
+import { test } from "../fixtures/loginFixtures"; // Importing loginFixtures for loggedInContext
+import { test as pomTest } from "../fixtures/pomFixtures"; // Importing the custom pomTest
+
 import CoreDashboardPage from "../pages/CoreDashboardPage";
 
 
-const authFile = "src/config/auth.json";
 
-test("Verify Syllabus Request on CORE.", async ({page}) =>{
+test.describe('Syllabus Request Form Flow', () => {
 
-    const coredashboardpage = new CoreDashboardPage(page);
+    pomTest("Submit Syllabus Request Form", async ({landingpage, syllabuspage}) =>{
 
-        await coredashboardpage.navigateToCoreDashboardPage();
+        // const landingpage = new LandingPage(page);
+    
+        await landingpage.navigateToLandingPage();
+        await landingpage.fillFirstname(process.env.firstname!);
+        await landingpage.fillEmail(process.env.email!);
+        await landingpage.fillPhone(8956895623);
+        await landingpage.clickSubmitInput();
+        syllabuspage.expectDonwloadSyllabusTextToBeVisible();
+    
+    });
+    
+ 
 
-        await coredashboardpage.clickOnLoginWithGoogleButton();
-        
-        await coredashboardpage.fillEmail();
-        await coredashboardpage.clickOnNextButton();
+    test("Testing login with fixtures.", async ({loggedInContext}) =>{
+        const page = await loggedInContext.newPage();
+        await page.goto("https://admin.dev.stg.ziplines.dev/admin/syllabus_requests");
 
-        await coredashboardpage.fillPassword();
-        await coredashboardpage.clickOnNextButton();
+        console.log("Title: ", await page.title());
+        const coreDashboardPage = new CoreDashboardPage(page);
+        const myEmail = await coreDashboardPage.verifySyllbusRequestRecord();
+        console.log(`The email is: ${myEmail}`);
+    });
 
-        await page.context().storageState({ path: authFile });
-        
-})
+});

@@ -1,0 +1,194 @@
+{
+  "config": {
+    "configFile": "D:\\Playwright-Typescript-Framework\\playwright.config.ts",
+    "rootDir": "D:/Playwright-Typescript-Framework/src/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "src/reporting",
+          "open": "always"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "src/reporting/test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "D:/Playwright-Typescript-Framework/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "D:/Playwright-Typescript-Framework/src/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.49.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "SyllabusRequestOnCoreTest.spec.ts",
+      "file": "SyllabusRequestOnCoreTest.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Syllabus Request Form Flow",
+          "file": "SyllabusRequestOnCoreTest.spec.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Submit Syllabus Request Form",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "passed",
+                      "duration": 13095,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "[2024-12-10T22:47:22+05:30] info, Navigated to landing page URL.\r\n"
+                        },
+                        {
+                          "text": "[2024-12-10T22:47:22+05:30] info, Filled FirstName.\r\n"
+                        },
+                        {
+                          "text": "[2024-12-10T22:47:22+05:30] info, Filled Email.\r\n"
+                        },
+                        {
+                          "text": "[2024-12-10T22:47:22+05:30] info, Filled Phone Number.\r\n"
+                        },
+                        {
+                          "text": "[2024-12-10T22:47:22+05:30] info, Clicked on Submit button.\r\n"
+                        },
+                        {
+                          "text": "[2024-12-10T22:47:22+05:30] info, Download syllabus text is visible.\r\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-10T17:17:09.335Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Playwright-Typescript-Framework\\test-results\\SyllabusRequestOnCoreTest--ca0e6-ubmit-Syllabus-Request-Form-chromium\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "639ba00b9b57fc7e12e4-6e9195af016f1dbade4b",
+              "file": "SyllabusRequestOnCoreTest.spec.ts",
+              "line": 10,
+              "column": 12
+            },
+            {
+              "title": "Testing login with fixtures.",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "passed",
+                      "duration": 5919,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Title:  Syllabus Requests | Core\n"
+                        },
+                        {
+                          "text": "The email is: prakash+693@ziplines.com\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-10T17:17:22.855Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Playwright-Typescript-Framework\\test-results\\SyllabusRequestOnCoreTest--bbf7f-esting-login-with-fixtures--chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Playwright-Typescript-Framework\\test-results\\SyllabusRequestOnCoreTest--bbf7f-esting-login-with-fixtures--chromium\\test-finished-2.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "639ba00b9b57fc7e12e4-49156def8f2316f5ab4c",
+              "file": "SyllabusRequestOnCoreTest.spec.ts",
+              "line": 25,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2024-12-10T17:17:08.562Z",
+    "duration": 20545.669,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
